@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スズフェス2026 × 金大ボラサポ 活動振り返り＆レポート</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Google Fonts: Noto Sans JP & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0A2540',
+              blue: '#0066CC',
+              sky: '#38BDF8',
+              orange: '#FF6600',
+              gold: '#FF9900',
+              yellow: '#FFC72C',
+              dark: '#0F172A',
+              lightBg: '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            display: ['Montserrat', '"Noto Sans JP"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar & Animations */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0A2540; }
+    ::-webkit-scrollbar-thumb { background: #FF9900; border-radius: 4px; }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .glass-dark {
+      background: rgba(10, 37, 64, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #0A2540 0%, #004B99 50%, #0066CC 100%);
+    }
+    .accent-gradient-text {
+      background: linear-gradient(90deg, #FF9900, #FFC72C);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .badge-glow {
+      box-shadow: 0 0 20px rgba(255, 153, 0, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed selection:bg-brand-orange selection:text-white">
+
+  <!-- Navigation Bar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-brand-navy/90 backdrop-blur-md border-b border-white/10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-brand-orange to-brand-yellow flex items-center justify-center text-brand-navy font-black text-xl shadow-lg group-hover:scale-105 transition-transform">
+          S
+        </div>
+        <div>
+          <span class="font-display font-black text-lg tracking-wider text-white">SUZU FES 2026</span>
+          <span class="text-xs text-brand-yellow block font-medium">× 金大ボラサポ 活動レポート</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <a href="#overview" class="hover:text-brand-yellow transition-colors">開催概要</a>
+        <a href="#schedule" class="hover:text-brand-yellow transition-colors">タイムテーブル</a>
+        <a href="#gallery" class="hover:text-brand-yellow transition-colors">フォトギャラリー</a>
+        <a href="#analytics" class="hover:text-brand-yellow transition-colors">アンケート集計</a>
+        <a href="#reflection" class="hover:text-brand-yellow transition-colors">振り返り・学び</a>
+        <a href="#future" class="hover:text-brand-yellow transition-colors">未来への展望</a>
+      </div>
+
+      <!-- Mobile Nav Toggle Button -->
+      <button id="mobileMenuBtn" class="md:hidden text-2xl text-slate-200 hover:text-white focus:outline-none">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-brand-navy border-b border-white/10 px-4 pt-2 pb-6 space-y-3">
+      <a href="#overview" class="block py-2 text-slate-200 hover:text-brand-yellow">開催概要</a>
+      <a href="#schedule" class="block py-2 text-slate-200 hover:text-brand-yellow">タイムテーブル</a>
+      <a href="#gallery" class="block py-2 text-slate-200 hover:text-brand-yellow">フォトギャラリー</a>
+      <a href="#analytics" class="block py-2 text-slate-200 hover:text-brand-yellow">アンケート集計</a>
+      <a href="#reflection" class="block py-2 text-slate-200 hover:text-brand-yellow">振り返り・学び</a>
+      <a href="#future" class="block py-2 text-slate-200 hover:text-brand-yellow">未来への展望</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen hero-gradient text-white pt-24 pb-16 flex items-center justify-center overflow-hidden">
+    <!-- Decorative Ambient Glows -->
+    <div class="absolute top-1/4 -left-20 w-96 h-96 bg-brand-blue/30 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-10 -right-20 w-96 h-96 bg-brand-orange/20 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-brand-yellow text-xs sm:text-sm font-semibold mb-6 tracking-wide backdrop-blur-sm animate-pulse">
+        <i class="fa-solid fa-star"></i>
+        <span>スズフェス2026 × 金沢大学ボランティアさぽーとステーション 合同活動報告</span>
+      </div>
+
+      <h2 class="text-lg sm:text-2xl font-medium text-slate-200 mb-4 max-w-3xl mx-auto">
+        「目まぐるしく過ぎ去る日々の中で、ひたむきに奮闘するすべての人へ。」
+      </h2>
+
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-black font-display tracking-tight text-white mb-6 leading-tight">
+        SUZU FES <span class="accent-gradient-text">2026</span><br>
+        <span class="text-2xl sm:text-4xl md:text-5xl font-bold font-sans text-slate-100">能登の笑顔と未来をつなぐ熱気の記憶</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed mb-10">
+        石川県商工会議所青年部連合会（地域連携委員会）× 珠洲YEG × 金沢大学ボラサポの連携により実現した復興支援プロジェクト。感動、絆、そして次代へ続く熱狂の記録をレポートします。
+      </p>
+
+      <!-- Key Stats Badges Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-12">
+        <div class="glass-dark p-5 rounded-2xl border border-brand-yellow/30 text-center shadow-xl transform hover:-translate-y-1 transition-all">
+          <div class="text-xs text-brand-yellow font-bold uppercase tracking-wider mb-1">全体満足度</div>
+          <div class="text-3xl sm:text-4xl font-black font-display text-white">100<span class="text-xl">%</span></div>
+          <div class="text-xs text-slate-300 mt-1">平均 <span class="text-brand-yellow font-bold">4.67</span> / 5.0 点</div>
+        </div>
+
+        <div class="glass-dark p-5 rounded-2xl border border-brand-orange/30 text-center shadow-xl badge-glow transform hover:-translate-y-1 transition-all">
+          <div class="text-xs text-brand-orange font-bold uppercase tracking-wider mb-1">YEGサポート満足度</div>
+          <div class="text-3xl sm:text-4xl font-black font-display text-white">100<span class="text-xl">%</span></div>
+          <div class="text-xs text-slate-300 mt-1">平均 <span class="text-brand-orange font-bold">4.83</span> / 5.0 点</div>
+        </div>
+
+        <div class="glass-dark p-5 rounded-2xl border border-brand-sky/30 text-center shadow-xl transform hover:-translate-y-1 transition-all">
+          <div class="text-xs text-brand-sky font-bold uppercase tracking-wider mb-1">次回参加意向</div>
+          <div class="text-3xl sm:text-4xl font-black font-display text-white">91.7<span class="text-xl">%</span></div>
+          <div class="text-xs text-slate-300 mt-1">「ぜひ・機会があれば参加」の計</div>
+        </div>
+      </div>
+
+      <!-- Scroll Action Buttons -->
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#gallery" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-brand-orange to-brand-gold text-brand-navy font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center space-x-2">
+          <i class="fa-solid fa-images"></i>
+          <span>20枚のメモリアル写真を見る</span>
+        </a>
+        <a href="#analytics" class="px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold border border-white/20 backdrop-blur-sm transition-all flex items-center space-x-2">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>アンケート分析データ</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Overview Section (from 議案書 & チラシ) -->
+  <section id="overview" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-xs font-bold font-display uppercase tracking-widest text-brand-orange mb-2">EVENT OVERVIEW</h2>
+        <h3 class="text-3xl sm:text-4xl font-black text-brand-navy">スズフェス2026 開催概要 & 連携目的</h3>
+        <div class="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Main Description -->
+        <div class="lg:col-span-7 bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <span class="px-3 py-1 rounded-full bg-brand-blue text-white text-xs font-bold">事業趣旨</span>
+              <span class="text-xs text-slate-500 font-semibold">県青連 地域連携委員会 企画上程事業</span>
+            </div>
+            <h4 class="text-xl font-bold text-slate-900 mb-4 leading-snug">
+              単なるイベントにとどまらない、現地復興視察とコアな交流支援の統合モデル
+            </h4>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              能登半島地震からの復興を目指す珠洲市にて、主催の「珠洲商工会議所青年部（珠洲YEG）」が企画した『スズフェス2026』。金沢大学ボランティアさぽーとステーション（ボラさぽ）から学生ボランティアを派遣・動員し、確実なブース運用実務とあわせ、被災地視察・語り部講話などの学びを組み合わせた持続可能な地域連携モデルとして実施されました。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+              <div class="p-4 bg-white rounded-xl border border-slate-200">
+                <i class="fa-solid fa-handshake text-brand-orange text-lg mb-2 block"></i>
+                <span class="font-bold text-slate-900 block mb-1">無理のないコア運用</span>
+                <span class="text-slate-500">動員数を過度に追わず、参加学生への手厚いサポートと密な事前ミーティングを重視。</span>
+              </div>
+              <div class="p-4 bg-white rounded-xl border border-slate-200">
+                <i class="fa-solid fa-bus text-brand-blue text-lg mb-2 block"></i>
+                <span class="font-bold text-slate-900 block mb-1">移動・資金の手厚い支援</span>
+                <span class="text-slate-500">チャーターバス手配および金銭面バックアップにより、学生の参加ハードルを軽減。</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+            <span>主催：珠洲商工会議所青年部</span>
+            <span>協力：金沢大学ボラさぽ / 石川県青連</span>
+          </div>
+        </div>
+
+        <!-- Spec Detail Card -->
+        <div class="lg:col-span-5 bg-brand-navy text-white p-8 rounded-3xl flex flex-col justify-between shadow-lg relative overflow-hidden">
+          <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-orange/20 rounded-full blur-2xl pointer-events-none"></div>
+          <div>
+            <h4 class="text-lg font-bold text-brand-yellow mb-6 border-b border-white/10 pb-3 flex items-center space-x-2">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>開催スペック</span>
+            </h4>
+            <dl class="space-y-4 text-sm">
+              <div>
+                <dt class="text-xs text-slate-400 font-medium">日時</dt>
+                <dd class="font-bold text-white text-base">2026年10月11日(日) 11:00〜18:00（10:30開場）</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400 font-medium">会場</dt>
+                <dd class="font-bold text-white">珠洲市営陸上競技場（健民体育館横）</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400 font-medium">参加豪華キャスト</dt>
+                <dd class="text-slate-300 text-xs mt-1 space-y-1">
+                  <p><span class="text-brand-yellow font-bold">【Artist】</span> GAKU-MC / Leola / きのぽっぽ / ハジ→</p>
+                  <p><span class="text-brand-yellow font-bold">【Sports】</span> HEROs 日本代表アスリート多数</p>
+                  <p><span class="text-brand-yellow font-bold">【Comedian】</span> 新宿カウボーイ / マシンガンズ / グリンピース</p>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400 font-medium">ボラサポブース内容</dt>
+                <dd class="text-slate-300 text-xs mt-1">
+                  モルック体験・メッセージカード作成・アンケート抽選会・縁日企画運営
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 text-xs text-brand-yellow font-semibold flex items-center justify-between">
+            <span>入場料：無料</span>
+            <span>#SUZUFES2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section id="schedule" class="py-20 bg-slate-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-xs font-bold font-display uppercase tracking-widest text-brand-orange mb-2">TIMETABLE & STORY</h2>
+        <h3 class="text-3xl font-black text-brand-navy">当日のタイムスケジュール</h3>
+      </div>
+
+      <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-slate-200">
+        <div class="relative border-l-2 border-brand-blue/30 ml-4 sm:ml-32 space-y-8 my-4">
+          
+          <!-- Item 1 -->
+          <div class="relative pl-6 sm:pl-8">
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-orange border-4 border-white shadow"></div>
+            <div class="sm:absolute sm:-left-36 sm:top-1 text-xs font-bold text-brand-orange font-display">08:00 - 10:30</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-base">金沢出発〜珠洲市内現地視察＆語り部講話</h4>
+              <p class="text-xs text-slate-500 mt-1">貸切バスにて珠洲へ移動。語り部さん案内による被災現状の見学と事前学習。</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="relative pl-6 sm:pl-8">
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-blue border-4 border-white shadow"></div>
+            <div class="sm:absolute sm:-left-36 sm:top-1 text-xs font-bold text-brand-blue font-display">11:00 - 12:30</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-base">会場到着・ブース緊急設営＆HEROsスポーツ祭り開宴</h4>
+              <p class="text-xs text-slate-500 mt-1">視察から陸上競技場へ。ボラサポブース（モルック・メッセージカード等）の設営と呼び込み開始。</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="relative pl-6 sm:pl-8">
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-gold border-4 border-white shadow"></div>
+            <div class="sm:absolute sm:-left-36 sm:top-1 text-xs font-bold text-brand-navy font-display">12:30 - 15:30</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-base">オープニング〜アーティスト＆お笑いステージ怒涛の熱演</h4>
+              <p class="text-xs text-slate-500 mt-1">きのぽっぽ、お笑いライブ、Leola、HEROs特別ステージ、GAKU-MC熱唱で会場のボルテージは最高潮に。</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="relative pl-6 sm:pl-8">
+            <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-orange border-4 border-white shadow"></div>
+            <div class="sm:absolute sm:-left-36 sm:top-1 text-xs font-bold text-brand-orange font-display">15:30 - 18:00</div>
+            <div>
+              <h4 class="font-bold text-slate-900 text-base">ハジ→ライブ・珠洲市民ステージ〜感動の大抽選会＆閉演</h4>
+              <p class="text-xs text-slate-500 mt-1">市民みんなで踊り歌うフィナーレ。来場者とボランティアが一体となったくじ引き大会後に無事全日程終了。</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photogenic Photo Gallery (20 Photos with Modal Lightbox) -->
+  <section id="gallery" class="py-20 bg-brand-navy text-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-xs font-bold font-display uppercase tracking-widest text-brand-yellow mb-2">PHOTO GALLERY & MEMORIES</h2>
+        <h3 class="text-3xl sm:text-4xl font-black">スズフェス2026 20の感動シーン</h3>
+        <p class="text-slate-400 text-sm mt-2">カードをクリックすると拡大写真と詳細キャプションをご覧いただけます。</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10 text-xs sm:text-sm">
+        <button onclick="filterGallery('all')" class="gallery-tab active-tab px-4 py-2 rounded-full bg-brand-orange text-white font-bold transition-all">すべて (20)</button>
+        <button onclick="filterGallery('stage')" class="gallery-tab px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 font-bold transition-all">ステージ・ライブ</button>
+        <button onclick="filterGallery('booth')" class="gallery-tab px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 font-bold transition-all">ボラサポブース</button>
+        <button onclick="filterGallery('interaction')" class="gallery-tab px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 font-bold transition-all">地域交流</button>
+        <button onclick="filterGallery('study')" class="gallery-tab px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 text-slate-300 font-bold transition-all">現地視察・語り部</button>
+      </div>
+
+      <!-- Gallery Grid Container -->
+      <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Javascript will inject 20 items dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="relative max-w-4xl w-full bg-brand-dark border border-white/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+      <!-- Close Button -->
+      <button onclick="closeLightbox()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-brand-orange transition-colors">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+
+      <!-- Image Area -->
+      <div id="modalImageContainer" class="w-full md:w-3/5 bg-black flex items-center justify-center p-6 min-h-[300px]">
+        <!-- Dynamic Canvas / SVG Image rendered here -->
+      </div>
+
+      <!-- Info & Caption Area -->
+      <div class="w-full md:w-2/5 p-6 md:p-8 flex flex-col justify-between text-white">
+        <div>
+          <span id="modalCategory" class="px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold mb-3 inline-block">カテゴリ</span>
+          <h4 id="modalTitle" class="text-xl font-bold mb-4 text-brand-yellow leading-snug">写真タイトル</h4>
+          <p id="modalCaption" class="text-slate-300 text-sm leading-relaxed mb-6">キャプション文章</p>
+        </div>
+        <div class="pt-4 border-t border-white/10 text-xs text-slate-400 flex items-center justify-between">
+          <span>SUZU FES 2026 Memorial</span>
+          <span id="modalNumber" class="font-bold font-display text-brand-yellow">#01 / 20</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Survey Data & Analytics Section -->
+  <section id="analytics" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-xs font-bold font-display uppercase tracking-widest text-brand-orange mb-2">DATA & VOICES</h2>
+        <h3 class="text-3xl sm:text-4xl font-black text-brand-navy">アンケート集計結果・定量分析</h3>
+        <p class="text-slate-500 text-sm mt-2">参加学生ボランティア12名による回答結果のビジュアル分析</p>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <!-- Chart 1: Overall Satisfaction -->
+        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col items-center">
+          <h4 class="font-bold text-slate-900 text-base mb-1 text-center">全体の満足度</h4>
+          <div class="text-xs font-bold text-brand-blue mb-4">平均 4.67 / 5.0 点</div>
+          <div class="w-48 h-48 relative">
+            <canvas id="chartOverall"></canvas>
+          </div>
+          <div class="mt-4 text-center text-xs text-slate-500">
+            満足度100%（5点 66.7% / 4点 33.3%）
+          </div>
+        </div>
+
+        <!-- Chart 2: YEG Support -->
+        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col items-center">
+          <h4 class="font-bold text-slate-900 text-base mb-1 text-center">YEGサポート体制満足度</h4>
+          <div class="text-xs font-bold text-brand-orange mb-4">平均 4.83 / 5.0 点</div>
+          <div class="w-48 h-48 relative">
+            <canvas id="chartSupport"></canvas>
+          </div>
+          <div class="mt-4 text-center text-xs text-slate-500">
+            非常に高い評価（5点 83.3% / 4点 16.7%）
+          </div>
+        </div>
+
+        <!-- Chart 3: Next Time Intent -->
+        <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 shadow-sm flex flex-col items-center">
+          <h4 class="font-bold text-slate-900 text-base mb-1 text-center">次回活動への参加意向</h4>
+          <div class="text-xs font-bold text-brand-gold mb-4">参加肯定率 91.7%</div>
+          <div class="w-48 h-48 relative">
+            <canvas id="chartNext"></canvas>
+          </div>
+          <div class="mt-4 text-center text-xs text-slate-500">
+            ぜひ参加 75.0% / 機会があれば 16.7%
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Voices Testimonials Grid -->
+      <div id="reflection" class="pt-8 border-t border-slate-200">
+        <h4 class="text-2xl font-bold text-brand-navy mb-8 text-center">参加学生の生の声・定性コメント抽出</h4>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Column 1: YEG Support -->
+          <div class="bg-blue-50/50 p-6 rounded-2xl border border-blue-100">
+            <div class="flex items-center space-x-2 text-brand-blue font-bold text-sm mb-4">
+              <i class="fa-solid fa-thumbs-up"></i>
+              <span>YEGサポートの良かった点</span>
+            </div>
+            <ul class="space-y-3 text-xs text-slate-700 leading-relaxed">
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-blue-100">
+                「初期段階から目標等を共有してくださりブース内容を決めやすかった。事前確認も徹底していた。」
+              </li>
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-blue-100">
+                「バス移動の手配や費用面の支援がありがたく、学生メインで楽しんで運営できた。」
+              </li>
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-blue-100">
+                「当日トラブルなく、温かく声をかけてくださる方ばかりで最高の環境でした！」
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Local Connection & Insights -->
+          <div class="bg-amber-50/50 p-6 rounded-2xl border border-amber-100">
+            <div class="flex items-center space-x-2 text-brand-orange font-bold text-sm mb-4">
+              <i class="fa-solid fa-heart"></i>
+              <span>現地交流・気づき・感動</span>
+            </div>
+            <ul class="space-y-3 text-xs text-slate-700 leading-relaxed">
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-amber-100">
+                「『金沢から学生が来てくれただけで嬉しい』と涙ぐまれた時、交流自体の価値を実感した。」
+              </li>
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-amber-100">
+                「メッセージカードに『家を建てたい』『みんな戻ってきて』と高齢者の方が書かれた姿が胸に刺さった。」
+              </li>
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-amber-100">
+                「語り部さんのお話を聞いてから街を見ることで、景色の解像度が全然違って見えた。」
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3: 反省・次への課題 -->
+          <div class="bg-slate-100/70 p-6 rounded-2xl border border-slate-200">
+            <div class="flex items-center space-x-2 text-slate-700 font-bold text-sm mb-4">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span>反省点・次回への課題（改善策）</span>
+            </div>
+            <ul class="space-y-3 text-xs text-slate-700 leading-relaxed">
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-slate-200">
+                <strong class="block text-slate-900 mb-1">【設営時間の確保】</strong>
+                午前中の珠洲視察が延び、開場時のブース準備がギリギリになったため時間配分の見直しが必要。
+              </li>
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-slate-200">
+                <strong class="block text-slate-900 mb-1">【撤収・片付け手順】</strong>
+                イベント終了後の片付けフローや役割分担の説明をよりクリアに案内すること。
+              </li>
+              <li class="p-3 bg-white rounded-xl shadow-xs border border-slate-200">
+                <strong class="block text-slate-900 mb-1">【受付運用の簡略化】</strong>
+                受付でのリストバンド運用の必要性を再検証し、よりスムーズな誘導を検討する。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Outlook & Message -->
+  <section id="future" class="py-20 bg-gradient-to-br from-brand-navy via-slate-900 to-brand-navy text-white relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div class="w-16 h-16 bg-brand-orange/20 text-brand-yellow rounded-full flex items-center justify-center text-2xl mx-auto mb-6 border border-brand-yellow/30">
+        <i class="fa-solid fa-paper-plane"></i>
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-black font-display mb-6">次代へ受け継ぐ、珠洲との絆</h2>
+      <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto mb-10">
+        一回限りのイベントボランティアで終わらせず、今回参加した1年生を中心に「また珠洲に行きたい」という強い気持ちが育まれました。珠洲YEG・金大ボラサポ・県青連の固い信頼関係をバトンとし、今後も緊急時の連携や継続的なイベント交流を通して、能登の復興と持続可能な地域未来を創造し続けます。
+      </p>
+
+      <div class="inline-flex flex-col sm:flex-row items-center justify-center gap-4 bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-md">
+        <div class="text-left">
+          <div class="text-xs text-brand-yellow font-bold">報告作成主体</div>
+          <div class="text-base font-bold text-white">スズフェス2026 × 金大ボラサポ合同実行委員会</div>
+        </div>
+        <div class="h-8 w-px bg-white/20 hidden sm:block"></div>
+        <div class="text-xs text-slate-400">
+          お問い合わせ: suzu.cci.yeg@gmail.com
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 text-slate-500 py-8 border-t border-white/5 text-xs text-center">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 Suzu Chamber of Commerce and Industry Young Entrepreneurs Group & Kanazawa Univ. Volunteer Support Station.</p>
+    </div>
+  </footer>
+
+  <!-- Gallery Data & Modal JavaScript Logic -->
+  <script>
+    // 20 Photo Items Data Specification
+    const galleryItems = [
+      { id: 1, title: "オープニングの熱気", category: "stage", catLabel: "ステージ", caption: "珠洲市営陸上競技場に集まった大勢の来場者。晴天に恵まれた最高の開幕！", color: "#0066CC" },
+      { id: 2, title: "HEROsアスリート登場", category: "stage", catLabel: "ステージ", caption: "元日本代表アスリート陣（高山樹里さん、土井レミイ杏利さん他）の豪華ステージ。", color: "#FF9900" },
+      { id: 3, title: "GAKU-MC ライブ熱演", category: "stage", catLabel: "ステージ", caption: "リズムに合わせて会場全体が手拍子でひとつに包まれた感動の瞬間。", color: "#FFC72C" },
+      { id: 4, title: "Leola 澄み渡る歌声", category: "stage", catLabel: "ステージ", caption: "珠洲の青空に響き渡る優しいボーカル。多くの観客が涙を浮かべ聞き入った。", color: "#38BDF8" },
+      { id: 5, title: "ハジ→ 渾身のステージ", category: "stage", catLabel: "ステージ", caption: "「明日への活力をチャージしよう！」熱いメッセージと歌声に会場が熱狂。", color: "#0A2540" },
+      { id: 6, title: "お笑いライブ爆笑の渦", category: "stage", catLabel: "ステージ", caption: "新宿カウボーイ・マシンガンズ・グリンピースによる爆笑ステージで子どもも大喜び。", color: "#FF6600" },
+      { id: 7, title: "ボラサポブース開営", category: "booth", catLabel: "ボラサポブース", caption: "金大ボラサポの学生たちが心を込めて準備した体験ブースがいよいよオープン！", color: "#0066CC" },
+      { id: 8, title: "モルック体験コーナー", category: "booth", catLabel: "ボラサポブース", caption: "老若男女が一緒に楽しめるモルック。学生が丁寧にルールを教えて大盛り上がり。", color: "#FF9900" },
+      { id: 9, title: "アンケート＆くじ引き受付", category: "booth", catLabel: "ボラサポブース", caption: "来場者へ振り返りアンケートを案内しつつ、お楽しみ抽選券を配布。", color: "#FFC72C" },
+      { id: 10, title: "縁日コーナーの笑顔", category: "booth", catLabel: "ボラサポブース", caption: "子どもたちに大人気のお菓子・ゲーム景品ブース。笑顔が溢れる接客。", color: "#38BDF8" },
+      { id: 11, title: "想いを寄せるメッセージカード", category: "interaction", catLabel: "地域交流", caption: "「家を建てたい」「珠洲に戻ってきてほしい」住民の切実で温かいメッセージが集まる。", color: "#0A2540" },
+      { id: 12, title: "金沢大学学生と住民の対話", category: "interaction", catLabel: "地域交流", caption: "「金沢から応援に来てくれて本当に嬉しい」感謝の言葉に学生も感動。", color: "#FF6600" },
+      { id: 13, title: "子どもたちとのスポーツ交流", category: "interaction", catLabel: "地域交流", caption: "HEROsアスリートと学生ボランティアが一緒に子どもたちと汗を流す。", color: "#0066CC" },
+      { id: 14, title: "珠洲YEG×学生の強固な連携", category: "interaction", catLabel: "地域交流", caption: "準備段階から手厚くサポートしてくれたYEGの皆様との温かい記念撮影。", color: "#FF9900" },
+      { id: 15, title: "語り部さんによる被災地講話", category: "study", catLabel: "現地視察", caption: "午前中の珠洲市内視察。震災の状況と復興への歩みを直接伺う貴重な時間。", color: "#0A2540" },
+      { id: 16, title: "景色の解像度が高まる瞬間", category: "study", catLabel: "現地視察", caption: "「語り部さんのお話を聞くことで街の捉え方が180度変わった」と語る学生たち。", color: "#38BDF8" },
+      { id: 17, title: "飯田高校＆地元青年団出店", category: "interaction", catLabel: "地域交流", caption: "地元の若い力が集結。おいしいフードブースが立ち並び活気に満ちる。", color: "#FFC72C" },
+      { id: 18, title: "グランドフィナーレくじ引き", category: "stage", catLabel: "ステージ", caption: "豪華景品が当たる市民参加型のくじ引き大会で歓喜の声が響く。", color: "#FF6600" },
+      { id: 19, title: "撤収作業とやり遂げた笑顔", category: "booth", catLabel: "ボラサポブース", caption: "イベント終了後、チームワーク抜群でスピーディに片付けを完了。", color: "#0066CC" },
+      { id: 20, title: "また珠洲で逢いましょう！", category: "interaction", catLabel: "地域交流", caption: "1年生から先輩まで絆が深まった集合写真。次代への継承を誓う。", color: "#FF9900" }
+    ];
+
+    // Helper SVG Generator for Photo Placeholders
+    function createPhotoSVG(item) {
+      return `
+        <svg class="w-full h-full rounded-2xl" viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="280" fill="${item.color}" opacity="0.85"/>
+          <circle cx="200" cy="120" r="45" fill="white" opacity="0.2"/>
+          <path d="M120 220 L180 150 L220 190 L270 130 L320 220 Z" fill="white" opacity="0.3"/>
+          <text x="200" y="125" text-anchor="middle" fill="white" font-size="28" font-weight="bold" font-family="sans-serif">PHOTO #${item.id}</text>
+          <text x="200" y="155" text-anchor="middle" fill="#FFC72C" font-size="14" font-weight="bold" font-family="sans-serif">${item.title}</text>
+        </svg>
+      `;
+    }
+
+    // Render Gallery Items
+    function renderGallery(items) {
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = '';
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "group relative bg-slate-800/80 rounded-2xl border border-white/10 overflow-hidden shadow-lg cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300";
+        card.onclick = () => openLightbox(item.id);
+
+        card.innerHTML = `
+          <div class="aspect-video w-full bg-slate-900 relative overflow-hidden">
+            ${createPhotoSVG(item)}
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 text-white text-[10px] font-bold border border-white/20 backdrop-blur-sm">
+              ${item.catLabel}
+            </span>
+            <span class="absolute top-3 right-3 w-7 h-7 rounded-full bg-brand-orange text-white text-xs font-bold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md">
+              <i class="fa-solid fa-expand"></i>
+            </span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-bold text-white text-sm group-hover:text-brand-yellow transition-colors line-clamp-1">${item.id}. ${item.title}</h4>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2">${item.caption}</p>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter Logic
+    function filterGallery(category) {
+      document.querySelectorAll('.gallery-tab').forEach(btn => {
+        btn.classList.remove('bg-brand-orange', 'text-white');
+        btn.classList.add('bg-white/10', 'text-slate-300');
+      });
+      event.target.classList.remove('bg-white/10', 'text-slate-300');
+      event.target.classList.add('bg-brand-orange', 'text-white');
+
+      if (category === 'all') {
+        renderGallery(galleryItems);
+      } else {
+        const filtered = galleryItems.filter(item => item.category === category);
+        renderGallery(filtered);
+      }
+    }
+
+    // Lightbox Logic
+    function openLightbox(id) {
+      const item = galleryItems.find(i => i.id === id);
+      if (!item) return;
+
+      document.getElementById('modalImageContainer').innerHTML = createPhotoSVG(item);
+      document.getElementById('modalCategory').innerText = item.catLabel;
+      document.getElementById('modalTitle').innerText = `${item.id}. ${item.title}`;
+      document.getElementById('modalCaption').innerText = item.caption;
+      document.getElementById('modalNumber').innerText = `#${item.id < 10 ? '0' + item.id : item.id} / 20`;
+
+      document.getElementById('lightboxModal').classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.add('hidden');
+    }
+
+    // Initialize Charts via Chart.js
+    function initCharts() {
+      // 1. Overall Satisfaction Chart
+      new Chart(document.getElementById('chartOverall'), {
+        type: 'doughnut',
+        data: {
+          labels: ['非常に満足 (5点)', '満足 (4点)'],
+          datasets: [{
+            data: [66.7, 33.3],
+            backgroundColor: ['#0066CC', '#38BDF8'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          cutout: '70%'
+        }
+      });
+
+      // 2. YEG Support Chart
+      new Chart(document.getElementById('chartSupport'), {
+        type: 'doughnut',
+        data: {
+          labels: ['非常に満足 (5点)', '満足 (4点)'],
+          datasets: [{
+            data: [83.3, 16.7],
+            backgroundColor: ['#FF6600', '#FFC72C'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          cutout: '70%'
+        }
+      });
+
+      // 3. Next Intent Chart
+      new Chart(document.getElementById('chartNext'), {
+        type: 'doughnut',
+        data: {
+          labels: ['ぜひ参加したい', '機会があれば', 'どちらともいえない'],
+          datasets: [{
+            data: [75.0, 16.7, 8.3],
+            backgroundColor: ['#FF9900', '#38BDF8', '#94A3B8'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          cutout: '70%'
+        }
+      });
+    }
+
+    // DOM Ready Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      renderGallery(galleryItems);
+      initCharts();
+
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
